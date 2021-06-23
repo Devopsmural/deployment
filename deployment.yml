@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: v1
+metadata:
+   name: deployment
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+    env: CICD
+ template:
+   metadata:
+       name: deploypod
+       labels:
+        env: CICD
+   spec:
+    containers:
+     - name: c00
+       image: krish41/newproject:latest
+       ports:
+        - containerPort: 8080
